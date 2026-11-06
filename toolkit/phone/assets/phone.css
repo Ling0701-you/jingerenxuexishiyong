@@ -277,6 +277,13 @@
     box-shadow: none;
   }
 
+  /* 所有手机子页面共用顶部安全区，包括各自实现顶栏的收藏、文件、指南等。
+     在页面层预留，而非分别给顶栏加 padding，避免绝对定位按钮仍落在状态栏内。 */
+  .phone-overlay .phone-container > .phone-page {
+    top: env(safe-area-inset-top, 0px);
+    height: calc(100% - env(safe-area-inset-top, 0px));
+  }
+
   /* 小屏幕字体大小（直接使用调整后的字体大小，不再额外缩小）*/
   .phone-overlay {
     font-size: var(--phone-computed-size);
@@ -397,16 +404,16 @@
    ================================ */
 
 .phone-header {
-  height: calc(2.4em + env(safe-area-inset-top));
-  min-height: calc(2.4em + env(safe-area-inset-top));
+  height: 2.4em;
+  min-height: 2.4em;
   box-sizing: border-box;
-  /* 为 iPhone 刘海/状态栏预留顶部安全区，同时适当降低顶栏主体高度 */
+  /* 顶部安全区由移动端页面容器统一预留 */
   background: var(--phone-bg-white);
   /* border-bottom: 1px solid var(--phone-border); */
   /* 移除边框 */
   display: flex;
   align-items: center;
-  padding: env(safe-area-inset-top) 0.75em 0;
+  padding: 0 0.75em;
   flex-shrink: 0;
 }
 
@@ -1323,8 +1330,8 @@
   background-position: center;
   background-repeat: no-repeat;
   padding: 1em 0.75em;
-  padding-top: calc(3.6em + env(safe-area-inset-top));
-  /* 给顶部栏和 iPhone 顶部安全区留出空间 */
+  padding-top: 3.6em;
+  /* 给顶部栏留出空间；安全区由页面容器统一预留 */
   padding-bottom: 6em;
   /* 给输入区留出空间（两行布局：第一行约2em + 第二行2em + padding和gap约2em = 6em） */
   transition: transform 0.3s ease;
