@@ -87,7 +87,8 @@ import {
 
 // 扩展ID和路径（重要：必须和文件夹名一致！）
 const EXT_ID = "Acsus-Paws-Puffs";
-const extensionFolderPath = `scripts/extensions/third-party/${EXT_ID}`;
+// 使用当前 index.js 所在目录，避免仓库/插件文件夹改名后资源路径失效
+const extensionFolderPath = new URL('.', import.meta.url).href.replace(/\/$/, '');
 
 
 // ========================================
