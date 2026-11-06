@@ -15551,3 +15551,10 @@ body[data-character-bubble-theme="bubble-colorful-mint"] .chat-msg-received .cha
   border-radius: 16px !important;
   box-shadow: 0 2px 6px rgba(152,216,200,0.3) !important;
 }
+
+/* 顶部安全区与顶栏使用相同背景，主题切换时同步变化。 */
+@media (max-width: 768px) {
+  .phone-overlay .phone-container {
+    background: var(--phone-bg-white);
+  }
+}
